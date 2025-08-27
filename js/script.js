@@ -18,25 +18,27 @@ getElement("cardBox").addEventListener("click", function(event){
         const serviceNumber = helpCategory.parentNode.parentNode.children[3].innerText;
         const date = new Date().toLocaleTimeString();
         
-        const parentDiv = getElement("parent-div");
-        const createCard = document.createElement("div");
-        createCard.innerHTML = `
-                 <div class="flex justify-between items-center  mx-5 py-3 px-4 shadow-sm bg-[#fafafa] rounded-xl">
-                        <div>
-                            <h3 class="text-xl font-bold">${serviceName}</h3>
-                            <p class="text-lg text-gray-500 font-semibold">${serviceNumber}</p>
-                        </div>
-                    <span class="text-lg text-gray-500 font-semibold">${date}</span>
-                </div>
-        `
-        parentDiv.appendChild(createCard)
-        
         let coinCount = Number(getElement("coin-count").innerText);
 
             if(coinCount >= 20){
                 coinCount -= 20;
                 alert("📞" + " Calling, " + serviceName + " " + serviceNumber + "...")
                 getElement("coin-count").innerText = coinCount;
+
+                const parentDiv = getElement("parent-div");
+                const createCard = document.createElement("div");
+                createCard.innerHTML = `
+                     <div class="flex justify-between items-center  mx-5 py-3 px-4 shadow-sm bg-[#fafafa] rounded-xl">
+                        <div>
+                            <h3 class="text-xl font-bold">${serviceName}</h3>
+                            <p class="text-lg text-gray-500 font-semibold">${serviceNumber}</p>
+                            </div>
+                        <span class="text-lg text-gray-500 font-semibold">${date}</span>
+                    </div>
+                     `
+                parentDiv.appendChild(createCard)
+
+
             } else if (coinCount <= 0){
                 alert("❌ Don't have enough coins. You need at least 20 coins to make a call !!")
             }else{
@@ -44,7 +46,6 @@ getElement("cardBox").addEventListener("click", function(event){
             }
 
     }
-
 
     if(event.target.className.includes("copy-btn")){
         const copiedButton = event.target;
