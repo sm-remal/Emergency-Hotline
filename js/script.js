@@ -1,4 +1,3 @@
-
 // Common Function 
 function getElement(id){
     element = document.getElementById(id);
